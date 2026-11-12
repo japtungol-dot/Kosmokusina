@@ -270,7 +270,7 @@ export default function App() {
                 type="submit"
               >
                 <span>{sending ? "Sending..." : "Reserve my spot"}</span>
-                <strong>₱{PRICE}</strong>
+                <strong>→</strong>
               </button>
               {failed && (
                 <p className="shipping-note">
@@ -340,7 +340,7 @@ export default function App() {
           <span className="brand-mark">
             <SparkIcon />
           </span>
-          MOONSHOT
+          KOSMOKUSINA
         </Link>
         <p>Filipino food for everywhere else.</p>
         <span>© 2026 Kosmokusina Foods</span>
