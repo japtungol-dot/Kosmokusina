@@ -9,6 +9,11 @@ import {
 
 const PRICE = 249
 
+// Emails go to this Google Form (Responses tab).
+const FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeK_T5sjLl666cWzxrOmeFllUFDvcIDYiG1sxEjNEjteUDZ5Q/formResponse"
+const FORM_FIELD = "entry.516496021"
+
 function Icon({ children, size = 20 }: { children: ReactNode; size?: number }) {
   return (
     <svg
@@ -111,6 +116,8 @@ export default function App() {
   const cardRef = useRef<HTMLDivElement>(null)
   const [email, setEmail] = useState("")
   const [joined, setJoined] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [failed, setFailed] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   const tiltCard = (event: MouseEvent<HTMLDivElement>) => {
@@ -126,9 +133,24 @@ export default function App() {
     cardRef.current?.style.setProperty("--tilt-y", "0deg")
   }
 
-  const joinWaitlist = (event: FormEvent) => {
+  const joinWaitlist = async (event: FormEvent) => {
     event.preventDefault()
-    setJoined(true)
+    if (sending) return
+    setSending(true)
+    setFailed(false)
+    try {
+      await fetch(FORM_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ [FORM_FIELD]: email }).toString(),
+      })
+      setJoined(true)
+    } catch {
+      setFailed(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -242,10 +264,19 @@ export default function App() {
                 type="email"
                 value={email}
               />
-              <button className="button add-button" type="submit">
-                <span>Reserve my spot</span>
+              <button
+                className="button add-button"
+                disabled={sending}
+                type="submit"
+              >
+                <span>{sending ? "Sending..." : "Reserve my spot"}</span>
                 <strong>₱{PRICE}</strong>
               </button>
+              {failed && (
+                <p className="shipping-note">
+                  Something went wrong. Please try again.
+                </p>
+              )}
             </form>
           )}
           <p className="shipping-note">
