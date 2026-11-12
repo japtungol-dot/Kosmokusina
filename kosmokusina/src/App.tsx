@@ -160,7 +160,7 @@ export default function App() {
           <span className="brand-mark">
             <SparkIcon />
           </span>
-          MOONSHOT
+          KOSMOKUSINA
         </Link>
         <div className={`nav-links ${menuOpen ? "nav-links-open" : ""}`}>
           <Link href="#menu">Space Adobo</Link>
@@ -213,7 +213,7 @@ export default function App() {
           <div className="meal-pouch" ref={cardRef}>
             <div className="card-sheen" />
             <div className="pouch-topline">
-              <span>MOONSHOT</span>
+              <span>KOSMOKUSINA</span>
               <b>01</b>
             </div>
             <div className="pouch-image">
@@ -240,7 +240,7 @@ export default function App() {
           <p className="selector-label">Meal 01</p>
           <div className="product-row">
             <strong>Space Adobo</strong>
-            <span>₱{PRICE}</span>
+        
           </div>
           <div className="selected-details">
             <p>Soy • cane vinegar • black pepper</p>
@@ -313,7 +313,7 @@ export default function App() {
             <i>astronaut ice cream.</i>
           </Heading>
           <p>
-            Moonshot starts with real Filipino recipes, real ingredients, and a
+            Kosmokusina starts with real Filipino recipes, real ingredients, and a
             lot of heart. Then we use food science to make every bowl lighter,
             longer-lasting, and ready to travel.
           </p>
@@ -343,7 +343,7 @@ export default function App() {
           MOONSHOT
         </Link>
         <p>Filipino food for everywhere else.</p>
-        <span>© 2026 Moonshot Foods</span>
+        <span>© 2026 Kosmokusina Foods</span>
       </footer>
     </main>
   )
