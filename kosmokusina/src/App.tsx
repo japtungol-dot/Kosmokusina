@@ -12,7 +12,7 @@ const PRICE = 249
 // Emails go to this Google Form (Responses tab).
 const FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeK_T5sjLl666cWzxrOmeFllUFDvcIDYiG1sxEjNEjteUDZ5Q/formResponse"
-const FORM_FIELD = "entry.516496021"
+const FORM_FIELD = "entry.131492426"
 
 function Icon({ children, size = 20 }: { children: ReactNode; size?: number }) {
   return (
